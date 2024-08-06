@@ -4,6 +4,7 @@ namespace MiddlewareExample.Middlewares
 {
   // Factory middlewareleri Transient olarak service provider'a tanımlıyoruz.
   // Contructor Injection
+  // Factory Middlewarelerde Service tipi ne olursa olsun Contructor Injection yapılabilir. Scoped, Transient veya Singleton önemli değil.
   public class FactoryMiddleware : IMiddleware
   {
     private readonly ISample _sample;

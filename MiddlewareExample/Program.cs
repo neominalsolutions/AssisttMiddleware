@@ -14,7 +14,7 @@ builder.Services.AddSwaggerGen();
 
 // Factory middleware
 builder.Services.AddTransient<FactoryMiddleware>();
-builder.Services.AddTransient<ISample,SampleService>();
+builder.Services.AddScoped<ISample,SampleService>();
 
 var app = builder.Build();
 
@@ -200,10 +200,12 @@ app.Use(async (context, next) =>
 //});
 
 //app.UseMiddleware<RequestLoggingMiddleware>();
-app.UseRequestLogging();
+// app.UseRequestLogging();
 //app.UseRequestBenchMark();
 
-app.UseMiddleware<FactoryMiddleware>();
+//app.UseMiddleware<FactoryMiddleware>();
+
+app.UseMiddleware<ScopeMiddleware>();
 
 // Kimlik doðrulama sonrasý middleware kullanýmý
 
